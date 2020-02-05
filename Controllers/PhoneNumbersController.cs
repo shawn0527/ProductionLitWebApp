@@ -90,7 +90,7 @@ namespace ProductionLiteWebApp.Controllers
             _context.PhoneNumber.Add(phoneNumber);
             await _context.SaveChangesAsync();
 
-            return Ok(phoneNumber);
+            return CreatedAtAction("GetPhoneNumber", new { id = phoneNumber.Id }, phoneNumber); ;
         }
 
         // DELETE: api/PhoneNumbers/5
