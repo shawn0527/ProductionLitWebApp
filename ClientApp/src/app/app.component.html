@@ -1,6 +1,13 @@
-<h1>ProductionLite Web App</h1>
-<nav>
-  <a routerLink="/home" routerLinkActive="active">Login</a>
-  <a routerLink="/welcome" routerLinkActive="active">Home Page</a>
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+  <a routerLink="/" style="text-decoration: none"><h1 class="navbar-brand">ProductionLite Web App</h1></a>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#theMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="theMenu" class="navbar-collapse collapse">
+    <ul class="navbar-nav">
+      <li calss="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">Login</a></li>
+      <li calss="nav-item"><a class="nav-link" routerLink="/welcome" routerLinkActive="active">Home Page</a></li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>
