@@ -15,9 +15,6 @@ namespace ProductionLiteWebApp
     {
         public static void Main(string[] args)
         {
-            //User user = new User();
-            //user.FirstName = "shawn";
-            //Console.WriteLine(user.FirstName);
             CreateWebHostBuilder(args).Build().Run();
         }
 

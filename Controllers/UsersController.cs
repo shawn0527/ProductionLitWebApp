@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductionLiteWebApp.Data;
 using ProductionLiteWebApp.Models;
+using System.Web.Http.Cors;
 
 namespace ProductionLiteWebApp.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase

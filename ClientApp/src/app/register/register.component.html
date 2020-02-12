@@ -1,23 +1,23 @@
 <div class="container">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+  <form #userRegistrationForm="ngForm" (ngSubmit)="onSubmit(userRegistrationForm)">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>Email</label>
-        <input type="email" class="form-control" placeholder="example@company.com" formControlName="emailAddress">
+        <input type="email" class="form-control" placeholder="example@company.com" name="EmailAddress" [(ngModel)]="user.EmailAddress">
       </div>
       <div class="form-group col-md-6">
         <label>Password</label>
-        <input type="password" class="form-control" formControlName="password">
+        <input type="password" class="form-control" name="Password" [(ngModel)]="user.Password">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>Cell Phone Number</label>
-        <input type="text" class="form-control" placeholder="Cell Phone Number" formControlName="cellPhoneNumber">
+        <input type="text" class="form-control" placeholder="Cell Phone Number" name="CellPhoneNumber" [(ngModel)]="user.CellPhoneNumber">
       </div>
       <div class="form-group col-md-6">
         <label>Work Phone Number</label>
-        <input type="text" class="form-control" placeholder="Work Phone Number" formControlName="workPhoneNumber">
+        <input type="text" class="form-control" placeholder="Work Phone Number" name="WorkPhoneNumber" [(ngModel)]="user.WorkPhoneNumber">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" /><label class="form-check-label">same as cell phone</label>
         </div>
@@ -26,18 +26,18 @@
     <div class="form-row">
       <div class="form-group col-sm-4">
         <label>Company</label>
-        <select data-live-search="true" class="form-control selectpicker" formControlName="company">
+        <select data-live-search="true" class="form-control selectpicker" name="Company" [(ngModel)]="user.Company">
           <option selected>Choose...</option>
           <option>Company A</option>
          </select>
       </div>
       <div class="form-group col-sm-4">
         <label>First Name</label>
-        <input type="text" class="form-control" placeholder="First Name" formControlName="firstName"/>
+        <input type="text" class="form-control" placeholder="First Name" name="FirstName" [(ngModel)]="user.FirstName"/>
       </div>
       <div class="form-group col-sm-4">
         <label>Last Name</label>
-        <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName"/>
+        <input type="text" class="form-control" placeholder="Last Name" name="LastName" [(ngModel)]="user.LastName"/>
       </div>
     </div>
     <div class="form-row">
