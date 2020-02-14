@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,10 @@ export class RegisterComponent implements OnInit {
 
   user = new User();
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.resetForm();
@@ -33,7 +37,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form?: NgForm) {
-    console.log(form.value)
     this.userService.registerUser(form.value);
+    this.resetForm(form);
+    this.router.navigate(['login'])
   }
 }

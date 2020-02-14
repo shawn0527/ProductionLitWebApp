@@ -14,8 +14,8 @@ namespace ProductionLiteWebApp.Controllers
     [ApiController]
     public class CompaniesController : ControllerBase
     {
-        private readonly ProductionLiteContext _context;
-
+        private  readonly  ProductionLiteContext _context;
+        private const int num = 10;
         public CompaniesController(ProductionLiteContext context)
         {
             _context = context;
@@ -25,6 +25,7 @@ namespace ProductionLiteWebApp.Controllers
         [HttpGet]
         public IEnumerable<Company> GetCompanies()
         {
+            
             return _context.Companies;
         }
 

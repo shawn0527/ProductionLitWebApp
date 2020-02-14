@@ -1,29 +1,17 @@
-import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpHeaderResponse, HttpRequest } from '@angular/common/http';
-import { HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-//import 'rxjs/add/operator/map';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { User } from './user.model';
+import { Url } from './url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  readonly rootUrl = 'http://localhost:8888';
-  constructor(private http: HttpClient, @Inject('BASE_URL') private originUrl) { }
-  private myHeader = new HttpHeaders();
-  
-
-  getHeaders() {  
-    this.myHeader = new HttpHeaders();
-    this.myHeader.set("Access-Control-Allow-Origin", "*");
-    this.myHeader.set("Content-Type", "application/json");
-    return this.myHeader
+  constructor(private http: HttpClient) {
   }
 
   registerUser(user: User) {
-    this.myHeader = this.getHeaders()
     const body: User = {
       "FirstName": user.FirstName,
       "LastName": user.LastName,
@@ -32,23 +20,27 @@ export class UserService {
       "CompanyId": 1,
       "Admin": false
     }
-    
+
     const options = {
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
         "Content-Type": "application/json"
       }
-    }
+    };
 
-    return this.http.post(this.rootUrl + '/api/Users', body, options)
-      .subscribe(result => {
-    return result; 
-    },
-      error => {
-        console.log("error posting to api: ");
-        console.log(error);
-      })
+    return this.http.post(Url.serverSideBaseUrl + '/api/Users', body, options)
+      .subscribe(
+        result => {
+          console.log(result)
+        },
+
+        error => {
+          console.log("error posting to api: " + error);
+        }
+      )
+  }
+
+  afterRegistration() {
+
   }
 
 }

@@ -1,0 +1,35 @@
+<div class="col-md-6 offset-md-3">
+  <div class="card card-body bg-light">
+    <form method="post">
+      <div asp-validation-summary="ModelOnly">
+        <div class="form-group">
+          <div class="form-group">
+            <label>Company:</label>
+            <select data-live-search="true" class="form-control" >
+              <option selected>Choose...</option>
+                <option *ngFor="let company of companies">{{company.companyName}}</option>
+            </select>
+          </div>
+          <label asp-for="userName">Email Address:</label>
+          <br />
+          <input class="form-control" asp-for="emailAddress" placeholder="Please enter your email address" />
+          <span asp-validation-for="emailAddress"></span>
+          <br />
+          <label asp-for="password">Password:</label>
+          <br />
+          <input class="form-control" asp-for="password" type="password" placeholder="Please enter your password" />
+          <span asp-validation-for="password"></span>
+          <br />
+          <div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="dropdown-divider"></div>
+            <div align="right">
+              <a class="dropdown-item" href="/home">Forgot username/password?</a>
+              <a class="dropdown-item" href="/register">No Account? Click to register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

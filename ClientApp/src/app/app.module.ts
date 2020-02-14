@@ -7,14 +7,17 @@ import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './shared/user.service';
+import { CompanyService } from './shared/company.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     WelcomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -23,12 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService,
-    {provide:"BASE_URL",useFactory:getBaseUrl}],
+  providers: [UserService, CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-export function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href;
-}
